@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Kuliner - Tanjungpinang Kuliner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 0.5rem;
+            z-index: 0;
+        }
+        
+        .culinary-marker {
+            transition: all 0.3s ease;
+        }
+        
+        .culinary-marker:hover {
+            transform: scale(1.1);
+        }
+        
+        .location-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-chip {
+            transition: all 0.2s ease;
+        }
+        
+        .filter-chip.active {
+            background-color: #d97706;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-amber-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl"></i>
+                <a href="index.html" class="text-xl font-bold">Tanjungpinang Kuliner</a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-amber-200">Beranda</a>
+                <a href="daftarkuliner.html" class="hover:text-amber-200">Daftar Kuliner</a>
+                <a href="kategori.html" class="hover:text-amber-200">Kategori</a>
+                <a href="petakuliner.html" class="font-semibold hover:text-amber-200">Peta Kuliner</a>
+                <a href="aboutus.html" class="hover:text-amber-200">Tentang Kami</a>
+                <a href="#" class="hover:text-amber-200">Kontak</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-amber-200"><i class="fas fa-search"></i></a>
+                <a href="login.html" class="bg-amber-600 hover:bg-amber-800 px-4 py-2 rounded-lg font-medium">Login</a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-amber-800 px-4 py-2" id="mobile-menu">
+            <a href="index.html" class="block py-2 hover:text-amber-200">Beranda</a>
+            <a href="daftarkuliner.html" class="block py-2 hover:text-amber-200">Daftar Kuliner</a>
+            <a href="kategori.html" class="block py-2 hover:text-amber-200">Kategori</a>
+            <a href="petakuliner.html" class="block py-2 font-semibold hover:text-amber-200">Peta Kuliner</a>
+            <a href="aboutus.html" class="block py-2 hover:text-amber-200">Tentang Kami</a>
+            <a href="#" class="block py-2 hover:text-amber-200">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-amber-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Peta Kuliner Tanjungpinang</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Temukan lokasi kuliner favorit Anda di seluruh penjuru Tanjungpinang</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container mx-auto px-4 py-8">
+        <!-- Map Filters -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-800">Filter Lokasi Kuliner</h2>
+                    <p class="text-gray-600">Temukan berdasarkan kategori atau area</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-chip active px-4 py-2 rounded-full bg-amber-100 text-amber-800 font-medium" data-category="all">
+                        Semua
+                    </button>
+                    <button class="filter-chip px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-category="seafood">
+                        <i class="fas fa-fish mr-1"></i> Seafood
+                    </button>
+                    <button class="filter-chip px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-category="traditional">
+                        <i class="fas fa-drumstick-bite mr-1"></i> Tradisional
+                    </button>
+                    <button class="filter-chip px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-category="streetfood">
+                        <i class="fas fa-utensils mr-1"></i> Jajanan
+                    </button>
+                    <button class="filter-chip px-4 py-2 rounded-full bg-gray-100 text-gray-800 font-medium" data-category="drinks">
+                        <i class="fas fa-glass-whiskey mr-1"></i> Minuman
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Map Container -->
+            <div class="lg:w-2/3">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <div id="map"></div>
+                </div>
+                
+                <!-- Map Legend -->
+                <div class="mt-4 bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold text-lg mb-3">Legenda Peta</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 rounded-full bg-red-500 mr-2"></div>
+                            <span>Kuliner Laut</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 rounded-full bg-blue-500 mr-2"></div>
+                            <span>Makanan Berat</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 rounded-full bg-green-500 mr-2"></div>
+                            <span>Jajanan Pasar</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 rounded-full bg-purple-500 mr-2"></div>
+                            <span>Minuman</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 rounded-full bg-yellow-500 mr-2"></div>
+                            <span>Kue Tradisional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Location List -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">Daftar Lokasi</h2>
+                        <span class="text-sm text-gray-600">128 tempat</span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Cari lokasi kuliner..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                        <!-- Location Card 1 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="warung-makan-selera">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-utensils text-amber-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Warung Makan Selera</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Batu 10, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(128 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card 2 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="rumah-makan-lempah">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-fish text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Rumah Makan Lempah</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Kota Baru, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(95 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card 3 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="kue-bangket-nenek">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-bread-slice text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Kue Bangket Nenek</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Pasar Lama, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(64 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card 4 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="sop-ikan-nanas">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-fish text-red-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Sop Ikan Nanas</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Sei Jang, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(72 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card 5 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="nasi-lemak-tanjung">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-utensils text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Nasi Lemak Tanjung</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Bukit Bestari, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(88 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Card 6 -->
+                        <div class="location-card bg-gray-50 rounded-lg p-4 transition duration-300 cursor-pointer" data-location="es-kelapa-muda">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-glass-whiskey text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Es Kelapa Muda</h3>
+                                    <div class="flex items-center text-sm text-gray-600 mb-1">
+                                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                                        <span>Penyengat, Tanjungpinang</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="flex text-amber-400 text-xs mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-xs text-gray-500">(53 ulasan)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Areas Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8">Area Kuliner Populer</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Area 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1510626176961-4b1d3de9c5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pasar Lama" class="w-full h-40 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-xl font-bold">Pasar Lama</h3>
+                        <p class="text-sm">28 tempat kuliner</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-600 mb-4">Pusat kuliner tradisional dengan berbagai jajanan pasar dan makanan khas Melayu.</p>
+                    <a href="#" class="text-amber-700 font-medium hover:underline">Lihat di peta <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Area 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1371&q=80" alt="Batu 10" class="w-full h-40 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-xl font-bold">Batu 10</h3>
+                        <p class="text-sm">19 tempat kuliner</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-600 mb-4">Kawasan seafood dengan banyak rumah makan yang menyajikan hidangan laut segar.</p>
+                    <a href="#" class="text-amber-700 font-medium hover:underline">Lihat di peta <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Area 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Kota Baru" class="w-full h-40 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-xl font-bold">Kota Baru</h3>
+                        <p class="text-sm">22 tempat kuliner</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-600 mb-4">Pusat kuliner modern dengan berbagai kafe dan restoran kekinian.</p>
+                    <a href="#" class="text-amber-700 font-medium hover:underline">Lihat di peta <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Area 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80" alt="Penyengat" class="w-full h-40 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="text-xl font-bold">Pulau Penyengat</h3>
+                        <p class="text-sm">15 tempat kuliner</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-600 mb-4">Destinasi wisata dengan kuliner khas Melayu dan minuman tradisional.</p>
+                    <a href="#" class="text-amber-700 font-medium hover:underline">Lihat di peta <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-amber-700 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Dapatkan Info Kuliner Terbaru</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Berlangganan newsletter kami untuk mendapatkan rekomendasi kuliner, promo, dan artikel terbaru seputar kuliner Tanjungpinang.</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Alamat email Anda" class="flex-grow py-3 px-4 rounded-l-lg focus:outline-none text-gray-800">
+                <button class="bg-amber-900 hover:bg-amber-800 px-6 py-3 rounded-r-lg font-medium">
+                    Berlangganan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-utensils text-2xl text-amber-500"></i>
+                        <span class="text-xl font-bold">Tanjungpinang Kuliner</span>
+                    </div>
+                    <p class="text-gray-400">Platform pengkategorian kuliner terbaik di Tanjungpinang. Temukan, nikmati, dan bagikan pengalaman kuliner Anda.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Daftar Kuliner</a></li>
+                        <li><a href="kategori.html" class="text-gray-400 hover:text-white">Kategori</a></li>
+                        <li><a href="petakuliner.html" class="text-gray-400 hover:text-white">Peta Kuliner</a></li>
+                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kategori Populer</h3>
+                    <ul class="space-y-2">
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Makanan Berat</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Kuliner Laut</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Jajanan Pasar</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Minuman Tradisional</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Camilan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">Jl. Merdeka No. 12, Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">info@tanjungpinangkuliner.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Tanjungpinang Kuliner. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Initialize map
+        const map = L.map('map').setView([0.9188, 104.4554], 13); // Tanjungpinang coordinates
+        
+        // Add tile layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Sample culinary locations data
+        const culinaryLocations = [
+            {
+                id: 'warung-makan-selera',
+                name: 'Warung Makan Selera',
+                position: [0.925, 104.45],
+                category: 'traditional',
+                type: 'restaurant',
+                iconColor: 'blue',
+                rating: 4.7,
+                reviews: 128,
+                address: 'Batu 10, Tanjungpinang'
+            },
+            {
+                id: 'rumah-makan-lempah',
+                name: 'Rumah Makan Lempah',
+                position: [0.92, 104.46],
+                category: 'seafood',
+                type: 'restaurant',
+                iconColor: 'red',
+                rating: 4.2,
+                reviews: 95,
+                address: 'Kota Baru, Tanjungpinang'
+            },
+            {
+                id: 'kue-bangket-nenek',
+                name: 'Kue Bangket Nenek',
+                position: [0.915, 104.44],
+                category: 'streetfood',
+                type: 'snack',
+                iconColor: 'green',
+                rating: 5.0,
+                reviews: 64,
+                address: 'Pasar Lama, Tanjungpinang'
+            },
+            {
+                id: 'sop-ikan-nanas',
+                name: 'Sop Ikan Nanas',
+                position: [0.91, 104.47],
+                category: 'seafood',
+                type: 'restaurant',
+                iconColor: 'red',
+                rating: 4.0,
+                reviews: 72,
+                address: 'Sei Jang, Tanjungpinang'
+            },
+            {
+                id: 'nasi-lemak-tanjung',
+                name: 'Nasi Lemak Tanjung',
+                position: [0.93, 104.445],
+                category: 'traditional',
+                type: 'restaurant',
+                iconColor: 'blue',
+                rating: 4.6,
+                reviews: 88,
+                address: 'Bukit Bestari, Tanjungpinang'
+            },
+            {
+                id: 'es-kelapa-muda',
+                name: 'Es Kelapa Muda',
+                position: [0.918, 104.435],
+                category: 'drinks',
+                type: 'drink',
+                iconColor: 'purple',
+                rating: 5.0,
+                reviews: 53,
+                address: 'Penyengat, Tanjungpinang'
+            }
+        ];
+        
+        // Create custom icons
+        const icons = {
+            blue: L.divIcon({
+                className: 'culinary-marker',
+                html: '<div class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fas fa-utensils"></i></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            }),
+            red: L.divIcon({
+                className: 'culinary-marker',
+                html: '<div class="bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fas fa-fish"></i></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            }),
+            green: L.divIcon({
+                className: 'culinary-marker',
+                html: '<div class="bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fas fa-bread-slice"></i></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            }),
+            purple: L.divIcon({
+                className: 'culinary-marker',
+                html: '<div class="bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fas fa-glass-whiskey"></i></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            }),
+            yellow: L.divIcon({
+                className: 'culinary-marker',
+                html: '<div class="bg-yellow-500 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"><i class="fas fa-cookie"></i></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            })
+        };
+        
+        // Add markers to map
+        const markers = {};
+        culinaryLocations.forEach(location => {
+            const marker = L.marker(location.position, {
+                icon: icons[location.iconColor]
+            }).addTo(map);
+            
+            marker.bindPopup(`
+                <div class="font-sans">
+                    <h3 class="font-bold text-lg">${location.name}</h3>
+                    <div class="flex items-center my-1">
+                        <div class="flex text-amber-400 text-xs mr-2">
+                            ${Array(Math.floor(location.rating)).fill('<i class="fas fa-star"></i>').join('')}
+                            ${location.rating % 1 >= 0.5 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+                            ${Array(5 - Math.ceil(location.rating)).fill('<i class="far fa-star"></i>').join('')}
+                        </div>
+                        <span class="text-xs text-gray-600">(${location.reviews} ulasan)</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600 my-2">
+                        <i class="fas fa-map-marker-alt text-amber-500 mr-1"></i>
+                        <span>${location.address}</span>
+                    </div>
+                    <a href="#" class="text-amber-700 text-sm font-medium hover:underline">Lihat detail <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            `);
+            
+            markers[location.id] = marker;
+        });
+        
+        // Filter functionality
+        const filterChips = document.querySelectorAll('.filter-chip');
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                // Update active chip
+                filterChips.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter markers (in a real app, this would filter the actual data)
+                culinaryLocations.forEach(location => {
+                    if (category === 'all' || location.category === category) {
+                        markers[location.id].addTo(map);
+                    } else {
+                        map.removeLayer(markers[location.id]);
+                    }
+                });
+            });
+        });
+        
+        // Location card interaction
+        const locationCards = document.querySelectorAll('.location-card');
+        locationCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const locationId = this.dataset.location;
+                const marker = markers[locationId];
+                
+                // Highlight card
+                locationCards.forEach(c => c.classList.remove('bg-amber-100'));
+                this.classList.add('bg-amber-100');
+                
+                // Open popup and center map
+                map.setView(marker.getLatLng(), 15);
+                marker.openPopup();
+            });
+        });
+    </script>
+</body>
+</html>
