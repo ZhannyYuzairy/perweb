@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Tanjungpinang Kuliner | Mengenal Lebih Dekat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1521017432531-fbd92f768e2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .value-card:hover {
+            background-color: #f59e0b;
+            color: white;
+        }
+        
+        .value-card:hover i {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                height: 30vh;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-amber-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl"></i>
+                <a href="index.html" class="text-xl font-bold">Tanjungpinang Kuliner</a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-amber-200">Beranda</a>
+                <a href="daftarkuliner.html" class="hover:text-amber-200">Daftar Kuliner</a>
+                <a href="#" class="hover:text-amber-200">Kategori</a>
+                <a href="#" class="hover:text-amber-200">Peta Kuliner</a>
+                <a href="aboutus.html" class="font-semibold hover:text-amber-200">Tentang Kami</a>
+                <a href="#" class="hover:text-amber-200">Kontak</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-amber-200"><i class="fas fa-search"></i></a>
+                <a href="#" class="bg-amber-600 hover:bg-amber-800 px-4 py-2 rounded-lg font-medium">Login</a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-amber-800 px-4 py-2" id="mobile-menu">
+            <a href="index.html" class="block py-2 hover:text-amber-200">Beranda</a>
+            <a href="daftarkuliner.html" class="block py-2 hover:text-amber-200">Daftar Kuliner</a>
+            <a href="#" class="block py-2 hover:text-amber-200">Kategori</a>
+            <a href="#" class="block py-2 hover:text-amber-200">Peta Kuliner</a>
+            <a href="aboutus.html" class="block py-2 hover:text-amber-200">Tentang Kami</a>
+            <a href="#" class="block py-2 hover:text-amber-200">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Tentang Kami</h1>
+            <p class="text-xl mb-6">Mengenal lebih dekat dengan Tanjungpinang Kuliner</p>
+            <div class="flex justify-center">
+                <a href="#aboutus.html" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium">
+                    Mulai Jelajahi <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang-kami" class="container mx-auto px-4 py-16">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                     alt="Tanjungpinang Kuliner" class="rounded-lg shadow-xl w-full h-auto">
+            </div>
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Siapa Kami?</h2>
+                <p class="text-gray-600 mb-4">
+                    Tanjungpinang Kuliner adalah platform digital yang didedikasikan untuk mempromosikan dan melestarikan kekayaan kuliner khas Tanjungpinang. Kami berkomitmen untuk menjadi penghubung antara pecinta kuliner dengan berbagai hidangan autentik yang ditawarkan oleh kota ini.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Didirikan pada tahun 2020, kami telah berkembang menjadi sumber informasi terpercaya tentang kuliner Tanjungpinang, dengan ribuan pengunjung setiap bulannya yang mencari rekomendasi tempat makan terbaik.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Dengan tim yang terdiri dari ahli kuliner lokal, food blogger, dan pecinta makanan, kami memberikan ulasan yang jujur dan rekomendasi terbaik untuk pengalaman kuliner Anda di Tanjungpinang.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">
+                        <i class="fas fa-utensils mr-2"></i> 150+ Kuliner
+                    </div>
+                    <div class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">
+                        <i class="fas fa-users mr-2"></i> 10.000+ Pengguna
+                    </div>
+                    <div class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">
+                        <i class="fas fa-star mr-2"></i> 4.9 Rating
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="bg-amber-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Visi & Misi Kami</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Komitmen kami untuk melestarikan dan mempromosikan kuliner Tanjungpinang kepada dunia
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 text-amber-700 p-3 rounded-full mr-4">
+                            <i class="fas fa-eye text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Visi Kami</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Menjadi platform utama dalam melestarikan dan mempromosikan kekayaan kuliner Tanjungpinang, serta menjadi penghubung antara warisan kuliner tradisional dengan generasi muda dan wisatawan.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-amber-100 text-amber-700 p-3 rounded-full mr-4">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Misi Kami</h3>
+                    </div>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                            <span>Mendokumentasikan dan mempromosikan kuliner khas Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                            <span>Mendukung UMKM kuliner lokal untuk berkembang</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                            <span>Menyediakan informasi kuliner yang akurat dan terpercaya</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Nilai-Nilai Kami</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto">
+                Prinsip-prinsip yang menjadi dasar setiap langkah dan keputusan kami
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="value-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-200">
+                <div class="text-amber-600 mb-4">
+                    <i class="fas fa-heart text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Cinta Kuliner Lokal</h3>
+                <p class="text-gray-600">
+                    Kami mencintai setiap hidangan khas Tanjungpinang dan berkomitmen untuk melestarikannya.
+                </p>
+            </div>
+            
+            <div class="value-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-200">
+                <div class="text-amber-600 mb-4">
+                    <i class="fas fa-hand-holding-heart text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Integritas</h3>
+                <p class="text-gray-600">
+                    Setiap rekomendasi dan ulasan kami didasarkan pada pengalaman nyata dan objektif.
+                </p>
+            </div>
+            
+            <div class="value-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-200">
+                <div class="text-amber-600 mb-4">
+                    <i class="fas fa-lightbulb text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Inovasi</h3>
+                <p class="text-gray-600">
+                    Terus berinovasi dalam menyajikan informasi kuliner dengan cara yang menarik.
+                </p>
+            </div>
+            
+            <div class="value-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-200">
+                <div class="text-amber-600 mb-4">
+                    <i class="fas fa-hands-helping text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Kolaborasi</h3>
+                <p class="text-gray-600">
+                    Bekerja sama dengan berbagai pihak untuk memajukan kuliner Tanjungpinang.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Tim Kami</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Orang-orang berdedikasi di balik Tanjungpinang Kuliner
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Ahmad Fauzi" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Ahmad Fauzi</h3>
+                        <p class="text-amber-600 font-medium mb-3">Founder & CEO</p>
+                        <p class="text-gray-600">
+                            Penggiat kuliner lokal dengan pengalaman 10 tahun di industri makanan.
+                        </p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                         alt="Dewi Lestari" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Dewi Lestari</h3>
+                        <p class="text-amber-600 font-medium mb-3">Head of Content</p>
+                        <p class="text-gray-600">
+                            Food blogger berpengalaman dan ahli dalam kuliner Melayu.
+                        </p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" 
+                         alt="Budi Santoso" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Budi Santoso</h3>
+                        <p class="text-amber-600 font-medium mb-3">Tech Lead</p>
+                        <p class="text-gray-600">
+                            Ahli teknologi yang memastikan platform kami berjalan dengan baik.
+                        </p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                         alt="Siti Rahma" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Siti Rahma</h3>
+                        <p class="text-amber-600 font-medium mb-3">Community Manager</p>
+                        <p class="text-gray-600">
+                            Menghubungkan kami dengan komunitas kuliner dan pelaku usaha.
+                        </p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-amber-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Tertarik Berkolaborasi dengan Kami?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Baik Anda pemilik usaha kuliner, penulis konten, atau pecinta makanan, kami terbuka untuk kerjasama.
+            </p>
+            <a href="#" class="inline-block bg-white text-amber-700 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold transition">
+                Hubungi Kami <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-utensils text-2xl text-amber-500"></i>
+                        <span class="text-xl font-bold">Tanjungpinang Kuliner</span>
+                    </div>
+                    <p class="text-gray-400">Platform pengkategorian kuliner terbaik di Tanjungpinang. Temukan, nikmati, dan bagikan pengalaman kuliner Anda.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Daftar Kuliner</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kategori</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Peta Kuliner</a></li>
+                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kategori Populer</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Makanan Berat</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kuliner Laut</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jajanan Pasar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Minuman Tradisional</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">Jl. Merdeka No. 12, Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">info@tanjungpinangkuliner.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Tanjungpinang Kuliner. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
