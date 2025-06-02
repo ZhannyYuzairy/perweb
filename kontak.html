@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - Tanjungpinang Kuliner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.3);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-amber-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl"></i>
+                <a href="index.html" class="text-xl font-bold">Tanjungpinang Kuliner</a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-amber-200">Beranda</a>
+                <a href="daftarkuliner.html" class="hover:text-amber-200">Daftar Kuliner</a>
+                <a href="kategori.html" class="hover:text-amber-200">Kategori</a>
+                <a href="petakuliner.html" class="hover:text-amber-200">Peta Kuliner</a>
+                <a href="aboutus.html" class="hover:text-amber-200">Tentang Kami</a>
+                <a href="kontak.html" class="font-semibold hover:text-amber-200">Kontak</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-amber-200"><i class="fas fa-search"></i></a>
+                <a href="login.html" class="bg-amber-600 hover:bg-amber-800 px-4 py-2 rounded-lg font-medium">Login</a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-amber-800 px-4 py-2" id="mobile-menu">
+            <a href="index.html" class="block py-2 hover:text-amber-200">Beranda</a>
+            <a href="daftarkuliner.html" class="block py-2 hover:text-amber-200">Daftar Kuliner</a>
+            <a href="kategori.html" class="block py-2 hover:text-amber-200">Kategori</a>
+            <a href="petakuliner.html" class="block py-2 hover:text-amber-200">Peta Kuliner</a>
+            <a href="aboutus.html" class="block py-2 hover:text-amber-200">Tentang Kami</a>
+            <a href="kontak.html" class="block py-2 font-semibold hover:text-amber-200">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-amber-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Hubungi Kami</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Punya pertanyaan atau masukan? Tim kami siap membantu Anda</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Contact Cards -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Contact Card 1 -->
+                <div class="contact-card bg-white rounded-lg shadow-md p-6 transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-amber-100 text-amber-700 p-3 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-1">Alamat Kami</h3>
+                            <p class="text-gray-600">Jl. Merdeka No. 12, Tanjungpinang, Kepulauan Riau</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Card 2 -->
+                <div class="contact-card bg-white rounded-lg shadow-md p-6 transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-700 p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-1">Telepon</h3>
+                            <p class="text-gray-600 mb-1">+62 812-3456-7890</p>
+                            <p class="text-gray-600">+62 877-6543-2109</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Card 3 -->
+                <div class="contact-card bg-white rounded-lg shadow-md p-6 transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-green-100 text-green-700 p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-1">Email</h3>
+                            <p class="text-gray-600 mb-1">info@tanjungpinangkuliner.com</p>
+                            <p class="text-gray-600">support@tanjungpinangkuliner.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg text-gray-800 mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Business Hours -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg text-gray-800 mb-4">Jam Operasional</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between text-gray-600">
+                            <span>Senin - Jumat</span>
+                            <span>08:00 - 17:00</span>
+                        </li>
+                        <li class="flex justify-between text-gray-600">
+                            <span>Sabtu</span>
+                            <span>09:00 - 15:00</span>
+                        </li>
+                        <li class="flex justify-between text-gray-600">
+                            <span>Minggu</span>
+                            <span class="text-red-500">Libur</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
+                    <p class="text-gray-600 mb-8">Isi formulir di bawah ini dan kami akan segera merespons pesan Anda.</p>
+                    
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 transition duration-300" placeholder="Masukkan nama Anda">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Alamat Email</label>
+                                <input type="email" id="email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 transition duration-300" placeholder="Masukkan email Anda">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subjek</label>
+                            <input type="text" id="subject" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 transition duration-300" placeholder="Subjek pesan Anda">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="message" rows="6" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500 transition duration-300" placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <input type="checkbox" id="subscribe" class="form-checkbox h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded">
+                            <label for="subscribe" class="ml-2 block text-gray-700">
+                                Berlangganan newsletter kami
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Map -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Lokasi Kantor Kami</h2>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.672373200008!2d104.45282531475398!3d0.9187639994452403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d97f9d8f1ed5f9%3A0xf4e94a8999858d3a!2sTanjungpinang%20City%2C%20Kepulauan%20Riau!5e0!3m2!1sen!2sid!4v1629876543210!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Pertanyaan yang Sering Diajukan</h2>
+            
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-800 text-left">Bagaimana cara menambahkan tempat kuliner ke dalam daftar?</h3>
+                        <i class="fas fa-chevron-down text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Anda dapat mengirimkan informasi tempat kuliner melalui formulir kontak kami atau dengan mengirim email ke submit@tanjungpinangkuliner.com. Pastikan untuk menyertakan nama tempat, alamat lengkap, deskripsi, dan foto-foto yang relevan.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-800 text-left">Berapa lama waktu respon untuk pertanyaan yang dikirim?</h3>
+                        <i class="fas fa-chevron-down text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Kami berusaha merespons semua pertanyaan dalam waktu 1-2 hari kerja. Untuk pertanyaan mendesak, Anda dapat menghubungi nomor telepon layanan pelanggan kami yang tersedia 24 jam.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-800 text-left">Apakah ada biaya untuk menggunakan layanan ini?</h3>
+                        <i class="fas fa-chevron-down text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Tidak, semua layanan pencarian dan informasi kuliner di Tanjungpinang Kuliner sepenuhnya gratis untuk pengguna. Kami tidak memungut biaya apapun untuk mengakses informasi tempat kuliner.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-800 text-left">Bagaimana cara melaporkan informasi yang tidak akurat?</h3>
+                        <i class="fas fa-chevron-down text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Anda dapat menggunakan tombol "Laporkan" yang tersedia di setiap halaman detail tempat kuliner, atau mengirim email ke accuracy@tanjungpinangkuliner.com dengan menyertakan detail ketidakakuratan dan bukti pendukung jika ada.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-800 text-left">Apakah saya bisa beriklan di platform ini?</h3>
+                        <i class="fas fa-chevron-down text-amber-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Ya, kami menawarkan berbagai pilihan iklan dan promosi untuk bisnis kuliner. Silakan hubungi tim penjualan kami di ads@tanjungpinangkuliner.com atau melalui nomor telepon +62 812-3456-7890 ext. 2 untuk informasi lebih lanjut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-amber-700 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Tetap Terhubung</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Berlangganan newsletter kami untuk mendapatkan info kuliner terbaru, promo, dan acara menarik di Tanjungpinang.</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Alamat email Anda" class="flex-grow py-3 px-4 rounded-l-lg focus:outline-none text-gray-800">
+                <button class="bg-amber-900 hover:bg-amber-800 px-6 py-3 rounded-r-lg font-medium">
+                    Berlangganan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-utensils text-2xl text-amber-500"></i>
+                        <span class="text-xl font-bold">Tanjungpinang Kuliner</span>
+                    </div>
+                    <p class="text-gray-400">Platform pengkategorian kuliner terbaik di Tanjungpinang. Temukan, nikmati, dan bagikan pengalaman kuliner Anda.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Daftar Kuliner</a></li>
+                        <li><a href="kategori.html" class="text-gray-400 hover:text-white">Kategori</a></li>
+                        <li><a href="petakuliner.html" class="text-gray-400 hover:text-white">Peta Kuliner</a></li>
+                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kategori Populer</h3>
+                    <ul class="space-y-2">
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Makanan Berat</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Kuliner Laut</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Jajanan Pasar</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Minuman Tradisional</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Camilan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">Jl. Merdeka No. 12, Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">info@tanjungpinangkuliner.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Tanjungpinang Kuliner. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ toggle functionality
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // Toggle content
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+                
+                // Close other FAQs
+                faqToggles.forEach(otherToggle => {
+                    if (otherToggle !== this) {
+                        otherToggle.nextElementSibling.classList.add('hidden');
+                        otherToggle.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+        
+        // Form submission (prevent default for demo)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
