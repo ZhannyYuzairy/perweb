@@ -7,35 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .category-header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 40vh;
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
         .culinary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .category-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .category-badge:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .active-category {
-            background-color: #b45309;
+            background-color: #d97706;
             color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .category-header {
-                height: 30vh;
-            }
         }
     </style>
 </head>
@@ -77,387 +61,426 @@
         </div>
     </nav>
 
-    <!-- Category Header -->
-    <section class="category-header flex items-center justify-center text-white">
-        <div class="text-center px-4">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Kategori Kuliner</h1>
-            <p class="text-xl">Temukan kuliner Tanjungpinang berdasarkan kategori favorit Anda</p>
-        </div>
-    </section>
-
-    <!-- Category Navigation -->
-    <section class="bg-white shadow-sm sticky top-16 z-40">
-        <div class="container mx-auto px-4">
-            <div class="flex overflow-x-auto py-4 space-x-2">
-                <a href="#makanan-berat" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Makanan Berat</a>
-                <a href="#camilan" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Camilan</a>
-                <a href="#minuman" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Minuman</a>
-                <a href="#kuliner-laut" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Kuliner Laut</a>
-                <a href="#jajanan-pasar" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Jajanan Pasar</a>
-                <a href="#kue-tradisional" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Kue Tradisional</a>
-                <a href="#makanan-pedas" class="category-badge whitespace-nowrap bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium">Makanan Pedas</a>
-            </div>
+    <!-- Hero Section -->
+    <section class="bg-amber-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Kategori Kuliner Tanjungpinang</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Temukan berbagai macam kuliner khas Tanjungpinang berdasarkan kategori favorit Anda</p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <!-- Makanan Berat Section -->
-        <section id="makanan-berat" class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="bg-amber-600 w-4 h-8 rounded mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Makanan Berat</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1371&q=80" alt="Lempah Darat" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-drumstick-bite mr-1"></i> Makanan Berat
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Lempah Darat</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.5
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Categories Sidebar -->
+            <div class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h2 class="text-xl font-bold mb-6 text-gray-800 border-b pb-2">Semua Kategori</h2>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg active-category">
+                                <span class="font-medium">Semua Kategori</span>
+                                <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">128</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Makanan Berat</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">42</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Camilan</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">25</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Minuman</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">18</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Kuliner Laut</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">32</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Jajanan Pasar</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">11</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Makanan Tradisional</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">27</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-amber-50">
+                                <span>Kue Basah</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">15</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-lg font-bold mb-4 text-gray-800 border-b pb-2">Filter Lanjutan</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                                <select class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option>Semua Lokasi</option>
+                                    <option>Kota Baru</option>
+                                    <option>Pasar Lama</option>
+                                    <option>Batu 10</option>
+                                    <option>Sei Jang</option>
+                                    <option>Bukit Bestari</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Harga</label>
+                                <select class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option>Semua Harga</option>
+                                    <option>Rp 0 - Rp 20.000</option>
+                                    <option>Rp 20.000 - Rp 50.000</option>
+                                    <option>Rp 50.000+</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Rating</label>
+                                <div class="space-y-2">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="rating5" class="rounded text-amber-600 focus:ring-amber-500">
+                                        <label for="rating5" class="ml-2 text-sm text-gray-700">
+                                            <div class="flex text-amber-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="rating4" class="rounded text-amber-600 focus:ring-amber-500">
+                                        <label for="rating4" class="ml-2 text-sm text-gray-700">
+                                            <div class="flex text-amber-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="rating3" class="rounded text-amber-600 focus:ring-amber-500">
+                                        <label for="rating3" class="ml-2 text-sm text-gray-700">
+                                            <div class="flex text-amber-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-3">Makanan khas Tanjungpinang dengan rasa pedas dan gurih yang khas.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 25.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Kota Baru
+                        <button class="w-full mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-lg font-medium">
+                            Terapkan Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Culinary List -->
+            <div class="lg:w-3/4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Semua Kuliner (128)</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">Urutkan:</span>
+                        <select class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option>Populer</option>
+                            <option>Rating Tertinggi</option>
+                            <option>Harga Terendah</option>
+                            <option>Harga Tertinggi</option>
+                            <option>Abjad (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Category Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <!-- Category Card 1 -->
+                    <div class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <a href="daftarkuliner.html">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Kuliner Laut" class="w-full h-40 object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-xl font-bold">Kuliner Laut</h3>
+                                    <p class="text-sm">32 tempat kuliner</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Category Card 2 -->
+                    <div class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <a href="daftarkuliner.html">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1371&q=80" alt="Makanan Berat" class="w-full h-40 object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-xl font-bold">Makanan Berat</h3>
+                                    <p class="text-sm">42 tempat kuliner</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Category Card 3 -->
+                    <div class="category-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                        <a href="daftarkuliner.html">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80" alt="Jajanan Pasar" class="w-full h-40 object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-xl font-bold">Jajanan Pasar</h3>
+                                    <p class="text-sm">11 tempat kuliner</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Culinary Items -->
+                <div class="space-y-6">
+                    <!-- Culinary Item 1 -->
+                    <div class="culinary-card bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row gap-4 transition duration-300">
+                        <div class="md:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Gulai Ikan" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="md:w-3/4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">Gulai Ikan Patin</h3>
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-amber-400 mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="text-gray-600 text-sm">4.7 (128 ulasan)</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt mr-2 text-amber-600"></i>
+                                        <span>Batu 10, Tanjungpinang</span>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium mb-3 md:mb-0">
+                                    Kuliner Laut
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Gulai ikan patin dengan rempah khas Melayu yang kaya akan rasa. Disajikan dengan nasi putih hangat dan sambal terasi.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Pedas</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Halal</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Keluarga</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-amber-700 font-bold text-lg">Rp 35.000</div>
+                                <a href="#" class="text-amber-700 font-medium hover:underline">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Culinary Item 2 -->
+                    <div class="culinary-card bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row gap-4 transition duration-300">
+                        <div class="md:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1371&q=80" alt="Lempah Darat" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="md:w-3/4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">Lempah Darat</h3>
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-amber-400 mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-600 text-sm">4.2 (95 ulasan)</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt mr-2 text-amber-600"></i>
+                                        <span>Kota Baru, Tanjungpinang</span>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium mb-3 md:mb-0">
+                                    Makanan Berat
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Makanan khas Tanjungpinang dengan rasa pedas dan gurih yang khas. Terbuat dari ikan, tempoyak, dan rempah-rempah pilihan.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Pedas</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Halal</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Tradisional</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-amber-700 font-bold text-lg">Rp 25.000</div>
+                                <a href="#" class="text-amber-700 font-medium hover:underline">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Culinary Item 3 -->
+                    <div class="culinary-card bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row gap-4 transition duration-300">
+                        <div class="md:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80" alt="Kue Bangket" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="md:w-3/4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">Kue Bangket</h3>
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-amber-400 mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-600 text-sm">5.0 (64 ulasan)</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt mr-2 text-amber-600"></i>
+                                        <span>Pasar Lama, Tanjungpinang</span>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium mb-3 md:mb-0">
+                                    Jajanan Pasar
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Kue tradisional khas Melayu dengan rasa manis dan tekstur renyah. Dibuat dari tepung beras, gula merah, dan santan.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Manis</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Halal</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Tradisional</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-amber-700 font-bold text-lg">Rp 15.000/porsi</div>
+                                <a href="#" class="text-amber-700 font-medium hover:underline">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Culinary Item 4 -->
+                    <div class="culinary-card bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row gap-4 transition duration-300">
+                        <div class="md:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Sop Ikan" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="md:w-3/4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">Sop Ikan Nanas</h3>
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-amber-400 mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-600 text-sm">4.0 (72 ulasan)</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt mr-2 text-amber-600"></i>
+                                        <span>Sei Jang, Tanjungpinang</span>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium mb-3 md:mb-0">
+                                    Kuliner Laut
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Sop ikan dengan campuran nanas yang memberikan rasa segar dan asam manis. Disajikan dengan nasi putih atau lontong.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Segar</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Halal</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Keluarga</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-amber-700 font-bold text-lg">Rp 30.000</div>
+                                <a href="#" class="text-amber-700 font-medium hover:underline">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Culinary Item 5 -->
+                    <div class="culinary-card bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row gap-4 transition duration-300">
+                        <div class="md:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1510626176961-4b1d3de9c5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nasi Lemak" class="w-full h-40 object-cover rounded-lg">
+                        </div>
+                        <div class="md:w-3/4">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800 mb-1">Nasi Lemak Tanjung</h3>
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex text-amber-400 mr-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="text-gray-600 text-sm">4.6 (88 ulasan)</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 mb-3">
+                                        <i class="fas fa-map-marker-alt mr-2 text-amber-600"></i>
+                                        <span>Bukit Bestari, Tanjungpinang</span>
+                                    </div>
+                                </div>
+                                <div class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium mb-3 md:mb-0">
+                                    Makanan Berat
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Nasi lemak dengan santan kental, disajikan dengan sambal ikan bilis, kacang tanah, telur, dan timun. Nikmat untuk sarapan.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Gurih</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Halal</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">Sarapan</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-amber-700 font-bold text-lg">Rp 20.000</div>
+                                <a href="#" class="text-amber-700 font-medium hover:underline">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Item 2 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nasi Ayam" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-drumstick-bite mr-1"></i> Makanan Berat
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Nasi Ayam Penyet</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.3
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Nasi dengan ayam goreng penyet disajikan dengan sambal khas dan lalapan segar.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 30.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Tanjungpinang Kota
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633321702518-6c49dc219c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Mie Tarempa" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-drumstick-bite mr-1"></i> Makanan Berat
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Mie Tarempa</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.7
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Mie khas Anambas dengan kuah kaldu ikan yang gurih dan topping ikan khas.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 28.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Bukit Bestari
-                            </div>
-                        </div>
-                    </div>
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <a href="#" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">&laquo;</a>
+                        <a href="#" class="px-3 py-1 rounded-lg bg-amber-600 text-white">1</a>
+                        <a href="#" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">2</a>
+                        <a href="#" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">3</a>
+                        <a href="#" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">&raquo;</a>
+                    </nav>
                 </div>
             </div>
-            
-            <div class="text-center mt-8">
-                <a href="daftarkuliner.html" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium">Lihat Semua Makanan Berat</a>
-            </div>
-        </section>
-        
-        <!-- Camilan Section -->
-        <section id="camilan" class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="bg-amber-600 w-4 h-8 rounded mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Camilan</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Otak-otak" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-cookie mr-1"></i> Camilan
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Otak-Otak</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.6
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Olahan ikan yang dibungkus daun pisang dengan citarasa gurih dan sedikit pedas.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 15.000/pcs</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Pasar Lama
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 2 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80" alt="Kue Bangket" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-cookie mr-1"></i> Camilan
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Kue Bangket</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.7
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Kue tradisional khas Melayu dengan rasa manis dan tekstur renyah.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 20.000/porsi</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Senggarang
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1603532648955-039310d784ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Pisang Goreng" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-cookie mr-1"></i> Camilan
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Pisang Goreng Ponti</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.4
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Pisang goreng khas dengan topping keju dan coklat yang melimpah.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 18.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Tanjungpinang Barat
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <a href="daftarkuliner.html" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium">Lihat Semua Camilan</a>
-            </div>
-        </section>
-        
-        <!-- Minuman Section -->
-        <section id="minuman" class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="bg-amber-600 w-4 h-8 rounded mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Minuman</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1563212034-a5a5e1e425e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Es Kacang Merah" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-coffee mr-1"></i> Minuman
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Es Kacang Merah</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.8
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Minuman segar khas Tanjungpinang dengan kacang merah, santan, dan es serut.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 12.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Kampung Bugis
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 2 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1560713781-d9e6b6358e1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Teh Tarik" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-coffee mr-1"></i> Minuman
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Teh Tarik Melayu</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.5
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Teh tarik dengan racikan khas Melayu Tanjungpinang yang creamy dan harum.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 10.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Batu 10
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Kopi Kapal Api" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-coffee mr-1"></i> Minuman
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Kopi Kapal Api</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.2
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Kopi khas Tanjungpinang yang diseduh dengan teknik tradisional.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 8.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Pasar Pagi
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <a href="daftarkuliner.html" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium">Lihat Semua Minuman</a>
-            </div>
-        </section>
-        
-        <!-- Kuliner Laut Section -->
-        <section id="kuliner-laut" class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="bg-amber-600 w-4 h-8 rounded mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Kuliner Laut</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Gulai Ikan" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-fish mr-1"></i> Kuliner Laut
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Gulai Ikan Patin</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.8
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Gulai ikan patin dengan rempah khas Melayu yang kaya akan rasa.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 35.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Batu 10
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 2 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ikan Bakar" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-fish mr-1"></i> Kuliner Laut
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Ikan Bakar Sambal Dabu-dabu</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.9
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Ikan segar bakar dengan sambal dabu-dabu khas Tanjungpinang.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 45.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Pantai Impian
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="culinary-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cumi Saus Padang" class="w-full h-48 object-cover">
-                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-fish mr-1"></i> Kuliner Laut
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Cumi Saus Padang</h3>
-                            <div class="flex items-center bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
-                                <i class="fas fa-star mr-1"></i> 4.6
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-3">Cumi segar dengan saus padang yang kaya rempah dan sedikit pedas.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="text-amber-700 font-semibold">Rp 40.000</div>
-                            <div class="text-gray-500 text-sm">
-                                <i class="fas fa-map-marker-alt mr-1"></i> Tanjungpinang Timur
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <a href="daftarkuliner.html" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium">Lihat Semua Kuliner Laut</a>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Newsletter -->
     <section class="bg-amber-700 text-white py-12">
@@ -498,4 +521,85 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Kategori Populer
+                    <h3 class="text-lg font-bold mb-4">Kategori Populer</h3>
+                    <ul class="space-y-2">
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Makanan Berat</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Kuliner Laut</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Jajanan Pasar</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Minuman Tradisional</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Camilan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">Jl. Merdeka No. 12, Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">info@tanjungpinangkuliner.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Tanjungpinang Kuliner. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Category filter functionality
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // In a real app, this would filter the culinary items
+                // For demo, we'll just show an alert
+                const categoryName = this.querySelector('h3').textContent;
+                alert(`Menampilkan semua kuliner dalam kategori: ${categoryName}`);
+            });
+        });
+        
+        // Active category highlighting
+        const categoryLinks = document.querySelectorAll('#categories-sidebar a');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                categoryLinks.forEach(l => l.classList.remove('active-category'));
+                this.classList.add('active-category');
+                
+                // In a real app, this would filter the culinary items
+                const categoryName = this.querySelector('span').textContent;
+                alert(`Menampilkan semua kuliner dalam kategori: ${categoryName}`);
+            });
+        });
+    </script>
+</body>
+</html>
