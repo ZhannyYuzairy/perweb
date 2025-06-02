@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tanjungpinang Kuliner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.3);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .divider::before {
+            margin-right: 1rem;
+        }
+        
+        .divider::after {
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <!-- Navigation -->
+    <nav class="bg-amber-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl"></i>
+                <a href="index.html" class="text-xl font-bold">Tanjungpinang Kuliner</a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-amber-200">Beranda</a>
+                <a href="daftarkuliner.html" class="hover:text-amber-200">Daftar Kuliner</a>
+                <a href="kategori.html" class="hover:text-amber-200">Kategori</a>
+                <a href="petakuliner.html" class="hover:text-amber-200">Peta Kuliner</a>
+                <a href="aboutus.html" class="hover:text-amber-200">Tentang Kami</a>
+                <a href="kontak.html" class="hover:text-amber-200">Kontak</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-amber-200"><i class="fas fa-search"></i></a>
+                <a href="login.html" class="bg-amber-600 hover:bg-amber-800 px-4 py-2 rounded-lg font-medium">Login</a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-amber-800 px-4 py-2" id="mobile-menu">
+            <a href="index.html" class="block py-2 hover:text-amber-200">Beranda</a>
+            <a href="daftarkuliner.html" class="block py-2 hover:text-amber-200">Daftar Kuliner</a>
+            <a href="kategori.html" class="block py-2 hover:text-amber-200">Kategori</a>
+            <a href="petakuliner.html" class="block py-2 hover:text-amber-200">Peta Kuliner</a>
+            <a href="aboutus.html" class="block py-2 hover:text-amber-200">Tentang Kami</a>
+            <a href="kontak.html" class="block py-2 hover:text-amber-200">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center">
+                <i class="fas fa-utensils text-5xl text-amber-600 mb-4"></i>
+                <h2 class="text-3xl font-extrabold text-gray-900">Masuk ke akun Anda</h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Atau 
+                    <a href="register.html" class="font-medium text-amber-600 hover:text-amber-500">
+                        daftar akun baru
+                    </a>
+                </p>
+            </div>
+            
+            <div class="login-card bg-white py-8 px-8 rounded-lg shadow-sm">
+                <form class="mt-8 space-y-6" id="loginForm">
+                    <input type="hidden" name="remember" value="true">
+                    <div class="rounded-md shadow-sm space-y-4">
+                        <div>
+                            <label for="email" class="sr-only">Alamat Email</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-envelope text-gray-400"></i>
+                                </div>
+                                <input id="email" name="email" type="email" autocomplete="email" required 
+                                    class="input-field appearance-none block w-full px-10 py-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm" 
+                                    placeholder="Alamat Email">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="password" class="sr-only">Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-gray-400"></i>
+                                </div>
+                                <input id="password" name="password" type="password" autocomplete="current-password" required 
+                                    class="input-field appearance-none block w-full px-10 py-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm" 
+                                    placeholder="Password">
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                    <button type="button" id="togglePassword" class="text-gray-400 hover:text-gray-500">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember-me" name="remember-me" type="checkbox" 
+                                class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                                Ingat saya
+                            </label>
+                        </div>
+
+                        <div class="text-sm">
+                            <a href="forgot-password.html" class="font-medium text-amber-600 hover:text-amber-500">
+                                Lupa password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" 
+                            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition duration-300">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <i class="fas fa-sign-in-alt text-amber-300 group-hover:text-amber-200"></i>
+                            </span>
+                            Masuk
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6">
+                    <div class="divider">
+                        <span class="text-sm text-gray-500">Atau masuk dengan</span>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-3 gap-3">
+                        <div>
+                            <a href="#" class="social-btn w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                                <i class="fab fa-facebook-f text-blue-600"></i>
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="#" class="social-btn w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                                <i class="fab fa-google text-red-600"></i>
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="#" class="social-btn w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                                <i class="fab fa-twitter text-blue-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-sm text-gray-500">
+                Belum punya akun? 
+                <a href="register.html" class="font-medium text-amber-600 hover:text-amber-500">
+                    Daftar sekarang
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-utensils text-2xl text-amber-500"></i>
+                        <span class="text-xl font-bold">Tanjungpinang Kuliner</span>
+                    </div>
+                    <p class="text-gray-400">Platform pengkategorian kuliner terbaik di Tanjungpinang. Temukan, nikmati, dan bagikan pengalaman kuliner Anda.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Daftar Kuliner</a></li>
+                        <li><a href="kategori.html" class="text-gray-400 hover:text-white">Kategori</a></li>
+                        <li><a href="petakuliner.html" class="text-gray-400 hover:text-white">Peta Kuliner</a></li>
+                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kategori Populer</h3>
+                    <ul class="space-y-2">
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Makanan Berat</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Kuliner Laut</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Jajanan Pasar</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Minuman Tradisional</a></li>
+                        <li><a href="daftarkuliner.html" class="text-gray-400 hover:text-white">Camilan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">Jl. Merdeka No. 12, Tanjungpinang</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">+62 812-3456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-2"></i>
+                            <span class="text-gray-400">info@tanjungpinangkuliner.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Tanjungpinang Kuliner. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        // Form submission (prevent default for demo)
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (!email || !password) {
+                    alert('Silakan isi semua field yang diperlukan');
+                    return;
+                }
+                
+                // Simulate login process
+                alert('Login berhasil! Selamat datang kembali.');
+                
+                // Redirect to home page after login
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
