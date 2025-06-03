@@ -11,9 +11,9 @@ Repositori ini merupakan proyek tugas mata kuliah Perancangan Web yang bertujuan
 ## Teknologi yang Digunakan
 - HTML, CSS, JavaScript
 
-##### MataKuliah : Perancangan Web
+## MataKuliah : Perancangan Web
 
-### Dosen Pengampu : Berta Erwin Slam, S.T., M.Kom.
+## Dosen Pengampu : Berta Erwin Slam, S.T., M.Kom.
 
 ## Anggota Kelompok :
 - Muhammad Arroyyan Hamel (2301020117)
