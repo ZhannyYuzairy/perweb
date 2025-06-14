@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TanjungPinangEats - Direktori Restoran Tanjungpinang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="tanjungpinangeats.css">
+    <link rel="icon" href="img/HTML title 5.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">TanjungPinang<span>Eats</span></a>
+            
+            <div class="nav-links">
+                <a href="#home">Beranda</a>
+                <a href="#categories">Kategori</a>
+                <a href="#popular">Populer</a>
+                <a href="#testimonial">Ulasan</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            
+            <button class="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu">
+            <a href="#home">Beranda</a>
+            <a href="#categories">Kategori</a>
+            <a href="#popular">Populer</a>
+            <a href="#testimonial">Ulasan</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero fade-in">
+        <div class="container">
+            <h1>Jelajahi Kuliner Tanjungpinang</h1>
+            <p>Temukan restoran terbaik di kota Anda</p>
+            <div class="hero-buttons">
+                <a href="#categories" class="btn btn-primary">Lihat Kategori</a>
+                <a href="#popular" class="btn btn-secondary">Restoran Populer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-12 bg-white">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Kategori Restoran</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Temukan restoran berdasarkan jenis masakan yang Anda inginkan</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">Semua</button>
+                <button class="category-tab" data-category="japanese">Jepang</button>
+                <button class="category-tab" data-category="indonesian">Indonesia</button>
+                <button class="category-tab" data-category="chinese">Chinese</button>
+                <button class="category-tab" data-category="western">Western</button>
+                <button class="category-tab" data-category="seafood">Seafood</button>
+                <button class="category-tab" data-category="cafe">Kafe</button>
+            </div>
+            
+            <!-- Restaurants -->
+            <div class="restaurant-grid" id="restaurants-container">
+                <!-- Restaurants will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Restaurants -->
+    <section id="popular" class="py-12 bg-gray-50">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Restoran Populer</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Restoran dengan rating tertinggi di Tanjungpinang</p>
+            </div>
+            
+            <div class="restaurant-grid">
+                <!-- Popular Restaurant 1 -->
+                <div class="restaurant-card">
+                    <div class="rating-badge">
+                        <i class="fas fa-star mr-1"></i> 4.8
+                    </div>
+                    <div class="price-indicator">
+                        $$ - Sedang
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Shojin Japanese Restaurant" class="restaurant-image">
+                    <div class="restaurant-info">
+                        <h3>Shojin Japanese Restaurant</h3>
+                        <p>Restoran Jepang autentik dengan sushi dan sashimi berkualitas tinggi</p>
+                        <div class="restaurant-meta">
+                            <span class="restaurant-location"><i class="fas fa-map-marker-alt mr-1"></i> Jl. Merdeka No. 45</span>
+                            <a href="shojin.html" class="restaurant-link">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Restaurant 2 -->
+                <div class="restaurant-card">
+                    <div class="rating-badge">
+                        <i class="fas fa-star mr-1"></i> 4.7
+                    </div>
+                    <div class="price-indicator">
+                        $ - Terjangkau
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Tomo Restaurant" class="restaurant-image">
+                    <div class="restaurant-info">
+                        <h3>Tomo Restaurant</h3>
+                        <p>Ramen dan hidangan Jepang lainnya dengan harga terjangkau</p>
+                        <div class="restaurant-meta">
+                            <span class="restaurant-location"><i class="fas fa-map-marker-alt mr-1"></i> Jl. Diponegoro No. 12</span>
+                            <a href="tomo.html" class="restaurant-link">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Restaurant 3 -->
+                <div class="restaurant-card">
+                    <div class="rating-badge">
+                        <i class="fas fa-star mr-1"></i> 4.9
+                    </div>
+                    <div class="price-indicator">
+                        $$$ - Mewah
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ocean Seafood" class="restaurant-image">
+                    <div class="restaurant-info">
+                        <h3>Ocean Seafood</h3>
+                        <p>Restoran seafood segar dengan pemandangan laut yang indah</p>
+                        <div class="restaurant-meta">
+                            <span class="restaurant-location"><i class="fas fa-map-marker-alt mr-1"></i> Jl. Pantai Impian No. 8</span>
+                            <a href="ocean_seafood.html" class="restaurant-link">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section id="testimonial" class="py-16 parallax" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title text-white">Apa Kata Pengunjung</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="testimonial-avatar">
+                        <div>
+                            <h4 class="testimonial-author">Sarah Wijaya</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Shojin Japanese Restaurant benar-benar autentik! Sashimi mereka sangat segar dan pelayanannya sangat baik. Tempat favorit saya untuk makan Jepang di Tanjungpinang."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" class="testimonial-avatar">
+                        <div>
+                            <h4 class="testimonial-author">Budi Santoso</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Ocean Seafood memiliki pemandangan laut yang spektakuler dan makanan yang luar biasa. Kepiting saus padang mereka adalah yang terbaik yang pernah saya coba!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="testimonial-avatar">
+                        <div>
+                            <h4 class="testimonial-author">Dewi Lestari</h4>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Tomo Restaurant menawarkan ramen yang lezat dengan harga yang sangat terjangkau. Tempat yang nyaman dengan suasana seperti di Jepang. Sangat direkomendasikan!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container">
+            <div class="lg:flex gap-8">
+                <div class="lg:w-1/2 mb-8">
+                    <h2 class="section-title">Hubungi Kami</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-description">Apakah Anda pemilik restoran dan ingin mendaftarkan bisnis Anda? Atau ada pertanyaan lainnya? Hubungi kami!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Lokasi</h4>
+                                <p class="text-gray-600">Jl. Pantai Impian No. 123, Tanjungpinang, Kepulauan Riau</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telepon</h4>
+                                <p class="text-gray-600">+62 812 3456 7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">info@tanjungpinangeats.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Jam Operasional</h4>
+                                <p class="text-gray-600">Setiap Hari 09:00 - 17:00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Ikuti Kami</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="contact-form">
+                        <h3 class="section-title text-xl mb-6">Form Kontak</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Nomor Telepon</label>
+                                <input type="tel" id="phone" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Pesan</label>
+                                <textarea id="message" class="form-input form-textarea" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                Kirim Pesan <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">TanjungPinang<span>Eats</span></div>
+                    <p class="footer-description">Direktori restoran terlengkap di Tanjungpinang. Temukan tempat makan terbaik di kota Anda.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#categories">Kategori</a></li>
+                        <li><a href="#popular">Populer</a></li>
+                        <li><a href="#testimonial">Ulasan</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Untuk Pemilik Restoran</h4>
+                    <ul>
+                        <li><a href="#">Daftarkan Restoran Anda</a></li>
+                        <li><a href="#">Promosi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-links-title">Berlangganan</h4>
+                    <p class="footer-description">Dapatkan rekomendasi restoran terbaru langsung ke email Anda.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Email Anda">
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TanjungPinangEats. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="tanjungpinangeats.js"></script>
+</body>
+</html>
